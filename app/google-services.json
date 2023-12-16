@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "333802918381",
+    "firebase_url": "https://examenpmo-default-rtdb.firebaseio.com",
+    "project_id": "examenpmo",
+    "storage_bucket": "examenpmo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:333802918381:android:2c36ceb3de94f28ec597e4",
+        "android_client_info": {
+          "package_name": "com.example.examen_bryanrodriguez"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZ8aeOis1kqJ2ggcHoBVN3aAp3x9aGuyo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:333802918381:android:0814d1e3ef6eaa15c597e4",
+        "android_client_info": {
+          "package_name": "com.example.examenfinalpmo_bryanrodriguez"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZ8aeOis1kqJ2ggcHoBVN3aAp3x9aGuyo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
