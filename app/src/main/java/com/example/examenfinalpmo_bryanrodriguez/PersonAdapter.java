@@ -34,13 +34,15 @@ public class PersonAdapter extends FirestoreRecyclerAdapter<Person, PersonAdapte
     public class PersonViewHolder extends RecyclerView.ViewHolder {
         private TextView nombrePeriodista;
         private TextView Descripcion;
-        private TextView fecha;
+   String fecha;
         private Button button;
+
 
         public PersonViewHolder(@NonNull View itemView) {
             super(itemView);
             nombrePeriodista = itemView.findViewById(R.id.firstname);
             Descripcion = itemView.findViewById(R.id.lastname);
+
             button = itemView.findViewById(R.id.button); // Reemplaza "miBoton" con el ID de tu botón en el diseño XML
 
             // Agregar el ClickListener al botón
@@ -51,6 +53,7 @@ public class PersonAdapter extends FirestoreRecyclerAdapter<Person, PersonAdapte
                     Intent intent = new Intent(itemView.getContext(), Perfil_entrevista.class);
                     intent.putExtra("Periodista", String.valueOf(nombrePeriodista.getText().toString().trim()));
                     intent.putExtra("Descripcion", String.valueOf(Descripcion.getText().toString().trim()));
+                    intent.putExtra("fecha", String.valueOf(fecha.toString()));
                     itemView.getContext().startActivity(intent);
                 }
             });
@@ -60,7 +63,7 @@ public class PersonAdapter extends FirestoreRecyclerAdapter<Person, PersonAdapte
             // Bind data to TextViews
             nombrePeriodista.setText(person.getPeriodista());
             Descripcion.setText(person.getDescripcion());
-            // fecha.setText(person.getFecha());
+            fecha = (person.getFecha());
         }
     }
 }

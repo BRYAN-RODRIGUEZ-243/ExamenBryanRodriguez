@@ -1,7 +1,9 @@
 package com.example.examenfinalpmo_bryanrodriguez;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
@@ -19,7 +21,7 @@ public class lista_de_entrevista extends AppCompatActivity {
     private CollectionReference personsCollection;
     private SearchView searchView;
 
-
+    Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +36,15 @@ public class lista_de_entrevista extends AppCompatActivity {
         searchView = findViewById(R.id.searchView);
 
         recyclerView = findViewById(R.id.recycler1);
+        button = findViewById(R.id.button6);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(lista_de_entrevista.this, subir_entrevista.class);
 
+                startActivity(intent);
+            }
+        });
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override

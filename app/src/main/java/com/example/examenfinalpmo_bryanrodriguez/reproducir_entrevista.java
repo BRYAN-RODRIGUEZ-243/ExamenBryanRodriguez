@@ -43,13 +43,16 @@ public class reproducir_entrevista extends AppCompatActivity {
         Intent intent = getIntent();
         periodista = intent.getStringExtra("Periodis");
         descripcion = intent.getStringExtra("Descrip");
-
+        Toast.makeText(reproducir_entrevista.this, descripcion, Toast.LENGTH_SHORT).show();
         button = findViewById(R.id.button5);
+        imageView = findViewById(R.id.imageView4);
+
+
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(reproducir_entrevista.this, subir_entrevista.class);
+                Intent intent = new Intent(reproducir_entrevista.this, lista_de_entrevista.class);
 
                 startActivity(intent);
             }
@@ -102,16 +105,39 @@ public class reproducir_entrevista extends AppCompatActivity {
     };
 
     public void cargarImagenDesdeFirebaseStorage() {
-        // Tu código para cargar la imagen desde Firebase Storage
+        // Obtener referencia a la imagen en Firebase Storage
+        // nombreImagen = "Entrevista TEDx de ingenieria.jpeg";  // Asumiendo que "nombreImagen" es el nombre del archivo en Storage
+        storageReference = FirebaseStorage.getInstance().getReference().child(descripcion.toString().concat(".jpeg"));
+
+        // Descargar la URL de la imagen desde Firebase Storage
+        storageReference.getDownloadUrl()
+                .addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        // Utilizar la biblioteca Glide para cargar la imagen en el ImageView
+                        cargarImagenConGlide(uri);
+
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        // Manejar la falla aquí, por ejemplo, mostrar un mensaje Toast
+                        Toast.makeText(reproducir_entrevista.this, "Error al cargar la imagen", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     private void cargarImagenConGlide(Uri uri) {
-        // Tu código para cargar la imagen con Glide
+        // Utilizar la biblioteca Glide para cargar la imagen en el ImageView
+        Glide.with(reproducir_entrevista.this)
+                .load(uri)
+                .into(imageView);
     }
 
     private void reproducirAudioDesdeFirebaseStorage() {
 
-        storageReference = FirebaseStorage.getInstance().getReference().child("audios/" + "Entrevista TEDx de ingenieria" + ".mp3");
+        storageReference = FirebaseStorage.getInstance().getReference().child("audios/" + descripcion.toString() + ".mp3");
 
         // Descargar la URL del archivo de audio desde Firebase Storage
         storageReference.getDownloadUrl()
