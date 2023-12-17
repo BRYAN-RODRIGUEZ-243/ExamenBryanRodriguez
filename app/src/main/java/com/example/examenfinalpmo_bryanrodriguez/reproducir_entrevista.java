@@ -137,7 +137,7 @@ public class reproducir_entrevista extends AppCompatActivity {
 
     private void reproducirAudioDesdeFirebaseStorage() {
 
-        storageReference = FirebaseStorage.getInstance().getReference().child("audios/" + descripcion.toString() + ".mp3");
+        storageReference = FirebaseStorage.getInstance().getReference().child("audios/" + descripcion + ".mp3");
 
         // Descargar la URL del archivo de audio desde Firebase Storage
         storageReference.getDownloadUrl()
@@ -151,7 +151,7 @@ public class reproducir_entrevista extends AppCompatActivity {
                             mediaPlayer.start();
                         } catch (IOException e) {
                             e.printStackTrace();
-                            Toast.makeText(reproducir_entrevista.this, "Error al reproducir el audio", Toast.LENGTH_SHORT).show();
+                           // Toast.makeText(reproducir_entrevista.this, "Error al reproducir el audio", Toast.LENGTH_SHORT).show();
                         }
                     }
                 })

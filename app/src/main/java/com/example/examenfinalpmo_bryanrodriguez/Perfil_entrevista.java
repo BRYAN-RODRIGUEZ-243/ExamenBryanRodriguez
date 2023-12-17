@@ -145,7 +145,7 @@ public class Perfil_entrevista extends AppCompatActivity {
         // Realizar la consulta en la colección "info" para encontrar el ID del periodista
         db.collection("info")
                 .whereEqualTo("Descripcion", descripcion.toString())
-                .whereEqualTo("Periodista", periodista.toString())
+               // .whereEqualTo("Periodista", periodista.toString())
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -176,8 +176,8 @@ public class Perfil_entrevista extends AppCompatActivity {
 
     public void cargarImagenDesdeFirebaseStorage() {
         // Obtener referencia a la imagen en Firebase Storage
-        // nombreImagen = "Entrevista TEDx de ingenieria.jpeg";  // Asumiendo que "nombreImagen" es el nombre del archivo en Storage
-        storageReference = FirebaseStorage.getInstance().getReference().child(descripcion.toString().concat(".jpeg"));
+         // Asumiendo que "nombreImagen" es el nombre del archivo en Storage
+        storageReference = FirebaseStorage.getInstance().getReference().child("Tesis".concat(".jpg"));
 
         // Descargar la URL de la imagen desde Firebase Storage
         storageReference.getDownloadUrl()

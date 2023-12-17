@@ -95,7 +95,7 @@ public class subir_entrevista extends AppCompatActivity {
             }
 
             if (imageUri != null) {
-              //  fileName += "." + getFileExtension(imageUri);
+                fileName += "." + getFileExtension(imageUri);
                 uploadFileToStorage(imageStorageReference.child(fileName), imageUri);
             }
         } else {
